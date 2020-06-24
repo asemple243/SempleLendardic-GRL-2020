@@ -1,0 +1,255 @@
+# specify output files
+datadir="65xyzmix20iso20020amb12y28e3"
+datafile="result"
+
+output_format=ascii-gz
+output_optional=horiz_avg,surf,geoid,pressure
+output_ll_max=20
+
+write_q_files=10
+
+# specify input files
+# Important: when file_vbcs is 1, make sure topvbc is also turned on.
+file_vbcs=0
+vel_bound_file="velbc/velbc_full"
+
+coor=0
+coor_file="coor32.dat"
+
+mat_control=0
+mat_file=""
+
+lith_age=0
+lith_age_file=""
+
+tracer=0
+tracer_file=""
+
+
+# processors, mesh grid information
+nproc_surf=12
+nprocx=2
+nprocy=2
+nprocz=2
+nodex=65
+nodey=65
+nodez=65
+mgunitx=4
+mgunity=4
+mgunitz=4
+levels=4
+
+
+# the calculation region definition
+radius_inner=0.55
+radius_outer=1.0
+
+theta_min=1.0708
+theta_max=2.0708
+
+fi_min=1.0708
+fi_max=2.0708
+
+
+# restart info
+tic_method=0
+restart=1
+post_p=0
+datadir_old="65xyzmix20iso20020amb12y28e3"
+datafile_old="result"
+solution_cycles_init=708500
+zero_elapsed_time=0
+
+
+# timestepping information
+minstep=1
+maxstep=20000001
+maxtotstep=20000001
+storage_spacing=200
+cpu_limits_in_seconds=1000000000
+
+# Initial conditions
+num_perturbations=4
+perturbmag=0.1
+perturbl=3
+perturbm=2
+perturblayer=1,2,3,4
+
+
+# Boundary Conditions
+topvbc=0
+     topvbxval=0.0
+     topvbyval=0.0
+botvbc=0
+     botvbxval=0.0
+     botvbyval=0.0
+
+toptbc=1
+     toptbcval=0.0
+bottbc=1
+     bottbcval=1.0
+
+lith_age_time=0
+lith_age_depth=0.031400
+mantle_temp=0.800000
+temperature_bound_adj=0
+depth_bound_adj=0.157000
+width_bound_adj=0.087270
+half_space_age=100.0
+
+
+# miscellaneous information
+stokes_flow_only=0
+inputdiffusicity=1.0
+rayleigh=1.0e5   # equiv 1.0e05
+Q0=20
+
+
+# required information
+Problem=convection
+Geometry=sphere
+Spacing=regular
+#Solver=cgrad
+Solver=multigrid
+node_assemble=1
+
+
+# Depth Information
+# for material above z_lith,    mat = 1;
+# for material above z_410,     mat = 2;
+# for material above z_lmantle, mat = 3;
+# for material below z_lmantle, mat = 4;
+#z_lith=0.0007848
+#z_410=0.03924                  #also depth of 410-phase change
+#z_lmantle=0.06435              #also depth of 670-phase change
+#z_cmb=0.439                    #     depth of another phase change
+z_lith=0.045
+z_410=0.12            #also depth of 410-phase change
+z_lmantle=0.12        #also depth of 670-phase change
+z_cmb=0.439           #     depth of another phase change
+
+
+# Viscosity Information
+Viscosity=system
+rheol=3
+visc_smooth_method=3
+
+VISC_UPDATE=on
+num_mat=4
+
+TDEPV=on
+viscE=0,0,0,0 #11.1,11.1,11.1,11.1
+viscT=0,0,0,0 #1.,1.,1.,1.
+visc0=200,0.5,1,1 
+#visc0=1e0,1e0,1e0,1e0
+
+visc_layer_control=off
+visc_layer_file="viscosity-file-basic.dat"
+
+SDEPV=on
+sdepv_expt=1,2,1,1
+sdepv_misfit=0.020
+
+PDEPV=on
+pdepv_a=2.8e3,2.8e3,2.8e3,2.8e3
+pdepv_b=0,0,0,0
+pdepv_y=2.8e3,2.8e3,2.8e3,2.8e3
+pdepv_eff=on
+pdepv_offset=0
+
+low_visc_channel=off
+low_visc_wedge=off
+lv_min_radius=0.9764
+lv_max_radius=0.9921
+lv_channel_thickness=0.0047
+lv_reduction=0.5
+
+VMIN=off
+visc_min=1.0e-2
+VMAX=off
+visc_max=1.0e5
+
+
+# Tracer information
+tracer=off
+
+tracer_ic_method=0
+tracers_per_element=10
+tracer_file="tracer.dat"
+
+tracer_flavors=0
+ic_method_for_flavors=0
+z_interface=0.700000
+
+regular_grid_deltheta=1.0
+regular_grid_delphi=1.0
+
+chemical_buoyancy=off
+buoy_type=1
+buoyancy_ratio=1.0
+reset_initial_composition=off
+
+
+# Phase Change Information
+Ra_410=0.0
+clapeyron410=0.0 #.0235
+transT410=0.0 #.78
+width410=0.0 #.0058
+
+Ra_670=0.0
+clapeyron670=0.0 #-0.0235
+transT670=0.0 #.0875
+width670=0.0 #.0058
+
+Ra_cmb=0.0
+clapeyroncmb=0.0 #-0.0235
+transTcmb=0.0 #.875
+widthcmb=0.0 #.0058
+
+
+# Dimensional Information
+radius=6371e3
+density=3340.0
+thermdiff=1.0e-6
+gravacc=9.81
+thermexp=3.0e-5
+refvisc=1e21
+cp=1200
+density_above=1030.0
+density_below=6600.0
+
+
+# Data input and program debugging
+DESCRIBE=off
+BEGINNER=off
+VERBOSE=off
+
+verbose=off
+see_convergence=1
+
+
+# Solver Related Matters
+mg_cycle=1
+down_heavy=3
+up_heavy=3
+vlowstep=20
+vhighstep=5
+
+piterations=375
+accuracy=1.0e-3
+
+ADV=on
+fixed_timestep=0.0
+finetunedt=0.7
+adv_sub_iterations=2
+adv_gamma=0.5
+
+precond=on
+aug_lagr=on
+aug_number=2.0e3
+
+remove_rigid_rotation=on
+
+# Age information
+start_age=4.0
+reset_startage=0
