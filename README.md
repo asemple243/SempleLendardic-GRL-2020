@@ -4,6 +4,12 @@ This folder contains the input files to go along with our paper submitted to GRL
 
 DOI: https://zenodo.org/badge/latestdoi/274563796
 
+
+
+[![DOI](https://zenodo.org/badge/274563796.svg)](https://zenodo.org/badge/latestdoi/274563796)
+
+
+
 1. input.65xyzmix20iso20020amb12y3e3 - strong lid (yield stress = 3e3) with a stagnant lid start (results: lid is stagnant)
 2. input.65xyzmix20iso20020amb12y28e3 - weak lid (2.8e3) with a stagnant lid start (results: lid is mobile)
 4. input.HYST65xyzmix20iso20020amb12y4e3 - stronger lid (4e3) with a mobile lid start (results: lid is moblie)
